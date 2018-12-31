@@ -1,7 +1,7 @@
 {
   "name": "vue-cms",
   "version": "1.0.0",
-  "description": "'Vue脚手架'",
+  "description": "Vue脚手架",
   "author": "Christmas-An <839132410@qq.com>",
   "private": true,
   "scripts": {
