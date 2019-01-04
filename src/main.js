@@ -19,6 +19,18 @@ Vue.use(MintUI)
 // 使用resource
 Vue.use(resource)
 
+// 配置根域名
+Vue.http.options.root = 'http://www.lovegf.cn:8899/'
+
+// 配置默认的post提交数据类型为传统表单
+Vue.http.options.emulateJSON = true
+
+// 导入moment包
+import moment from "moment"
+
+Vue.filter('dataFormat',(content,pattern = "YYYY-MM-DD HH:mm:ss") => {
+  return moment(content).format(pattern)
+})
 
 /* eslint-disable no-new */
 new Vue({
