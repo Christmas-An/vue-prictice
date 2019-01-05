@@ -11,6 +11,8 @@
 
     <div class="content" v-html="newsInfo.content"></div>
 
+    <comment :id="this.id"></comment>
+
   </div>
 </template>
 

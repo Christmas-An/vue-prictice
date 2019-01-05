@@ -32,6 +32,11 @@ Vue.filter('dataFormat',(content,pattern = "YYYY-MM-DD HH:mm:ss") => {
   return moment(content).format(pattern)
 })
 
+// 导入全局评论组件
+import comment from "./components/common/comment"
+Vue.component('comment',comment)
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
