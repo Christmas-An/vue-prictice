@@ -2,7 +2,7 @@
   <div class="userlistContainer">
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id">
-        <router-link :to="'/home/userInfo/' + item.id" >
+        <router-link :to="'/home/userInfo/'+ item.id" >
           <img class="mui-media-object mui-pull-left" :src="item.img_url">
           <div class="mui-media-body">
             <h1>{{ item.title }}</h1>
@@ -33,7 +33,7 @@ export default {
     getNewsList(){
       this.$http.get('api/getnewslist')
       .then(result => {
-        console.log(result.body)
+        // console.log(result.body)
         if(result.body.status === 0) {
           this.newsList = result.body.message
         }else {

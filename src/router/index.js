@@ -5,6 +5,7 @@ import vipContainer from "../pages/vip"
 import shopcarContainer from "../pages/shopcar"
 import searchContainer from "../pages/search"
 import userListContainer from "../pages/userlist"
+import userInfoContainer from "../pages/userinfo"
 
 Vue.use(Router)
 
@@ -15,7 +16,8 @@ export default new Router({
     { path:"/vip",component:vipContainer },
     { path:"/shopcar",component:shopcarContainer },
     { path:"/search",component:searchContainer },
-    { path:"/home/userList",component:userListContainer }
+    { path:"/home/userList",component:userListContainer },
+    { path:"/home/userInfo/:id",component:userInfoContainer }
   ],
   linkActiveClass:"mui-active"
 })
