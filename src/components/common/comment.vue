@@ -6,7 +6,7 @@
 
     <hr>
     
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
 
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item,i) in comments" :key="i">
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <mt-button type="danger" size="large" plain >加载更多</mt-button>
+    <mt-button type="danger" size="large" plain @click="getMore" >加载更多</mt-button>
   </div>
 </template>
 
@@ -40,11 +40,27 @@ export default {
   methods: {
     getComments(){
       this.$http.get("api/getcomments/" + this.id + "?pageindex=" + this.pageIndex).then(result => {
-        console.log(result.body)
+        // console.log(result.body)
         if(result.body.status === 0){
           this.comments = this.comments.concat(result.body.message)
         }else{
           Toast('加载评论失败')
+        }
+      })
+    },
+    getMore(){
+      this.pageIndex++
+      this.getComments()
+    },
+    postComment(){
+      if(this.msg.trim().length == 0) return Toast('评论不能为空')
+      this.$http.post('api/postcomment/' + this.$route.params.id,{ content: this.msg.trim() }).then(result => {
+        // console.log(result.body)
+        if(result.body.status === 0) {
+          this.comments = []
+          this.pageIndex = 1
+          this.getComments()
+          this.msg = ''
         }
       })
     }
