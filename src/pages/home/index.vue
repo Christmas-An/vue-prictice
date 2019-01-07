@@ -16,10 +16,10 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/photoList">
           <img src="../../assets/menu2.png" alt>
           <div class="mui-media-body">图片分享</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -72,7 +72,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .homeContainer {
   // 轮播图
   .mint-swipe {

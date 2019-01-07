@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   .userInfoContainer {
     padding: 0 4px;
     .title {
