@@ -4,8 +4,9 @@ import homeContainer from "../pages/home"
 import vipContainer from "../pages/vip"
 import shopcarContainer from "../pages/shopcar"
 import searchContainer from "../pages/search"
-import userListContainer from "../pages/userlist"
-import userInfoContainer from "../pages/userinfo"
+import newsListContainer from "../pages/newslist"
+import newsInfoContainer from "../pages/newsinfo"
+import photoListContainer from "../pages/photoList"
 
 Vue.use(Router)
 
@@ -16,8 +17,9 @@ export default new Router({
     { path:"/vip",component:vipContainer },
     { path:"/shopcar",component:shopcarContainer },
     { path:"/search",component:searchContainer },
-    { path:"/home/userList",component:userListContainer },
-    { path:"/home/userInfo/:id",component:userInfoContainer }
+    { path:"/home/newsList",component:newsListContainer },
+    { path:"/home/newsInfo/:id",component:newsInfoContainer },
+    { path:"/home/photoList",component:photoListContainer }
   ],
   linkActiveClass:"mui-active"
 })
