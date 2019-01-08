@@ -76,6 +76,7 @@ export default {
       margin: 15px 0;
     }
     .subtitle {
+      padding: 0 5px;
       display: flex;
       justify-content: space-between;
       font-size: 13px;
