@@ -36,6 +36,8 @@ Vue.filter('dataFormat',(content,pattern = "YYYY-MM-DD HH:mm:ss") => {
 import comment from "./components/common/comment"
 Vue.component('comment',comment)
 
+import VuePreview from 'vue2-preview'
+Vue.use(VuePreview)
 
 /* eslint-disable no-new */
 new Vue({
