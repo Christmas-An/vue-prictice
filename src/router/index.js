@@ -25,7 +25,7 @@ export default new Router({
     { path:"/home/photoList",component:photoListContainer },
     { path:"/home/photoInfo/:id",component:photoInfoContainer },
     { path:"/home/goodsList",component:goodsListContainer },
-    { path:"/home/goodsInfo/:id",component:goodsInfoContainer }
+    { path:"/home/goodsInfo/",component:goodsInfoContainer }
   ],
   linkActiveClass:"mui-active"
 })

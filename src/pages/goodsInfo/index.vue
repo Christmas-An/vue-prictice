@@ -18,18 +18,32 @@
 			<div class="mui-card-content">
 				<div class="mui-card-content-inner">
           <p class="price">
-
+            市场价: <del>￥2499</del> &nbsp;&nbsp;销售价: <span>￥2195</span>
+          </p>
+          <p>
+            购买数量: 
+          </p>
+          <p>
+            <button class="mint-button mint-button--primary mint-button--small">立即购买</button>
+            <button class="mint-button mint-button--danger mint-button--small">加入购物车</button>
           </p>
         </div>
 			</div>
 		</div>
     <!-- 商品参数 -->
     <div class="mui-card">
+      <div class="mui-card-header">商品参数</div>
 			<div class="mui-card-content">
 				<div class="mui-card-content-inner">
-					这是一个最简单的卡片视图控件；卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、点赞数量等
+          <p>商品货号：SD9102356032</p>
+          <p>库存情况：60件</p>
+          <p>上架时间：2015-04-20 00:51:03</p>
 				</div>
 			</div>
+      <div class="mui-card-footer">
+        <button class="mint-button mint-button--primary mint-button--large is-plain">图文介绍</button>
+        <button class="mint-button mint-button--danger mint-button--large is-plain">商品评论</button>
+      </div>
 		</div>
   </div>
 </template>
@@ -41,5 +55,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  
+  .goodsInfoContainer {
+    .mint-swipe {
+      height: 200px;
+      .mint-swipe-item {
+        height: 100%;
+      }
+    }
+    .price {
+      span {
+        color: red;
+        font-size: 16px;
+        font-weight: 700
+      }
+    }
+  }
 </style>
