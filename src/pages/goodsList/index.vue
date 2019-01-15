@@ -1,6 +1,6 @@
 <template>
   <div class="goodsListContainer">
-    <div class="goods" v-for="item in goodsList" :key="item.id">
+    <div class="goods" v-for="item in goodsList" :key="item.id" @tap="getDetail(item.id)">
       <img :src="item.img_url" alt="">
       <h1 class="title">{{ item.title }}</h1>
       <div class="info">
@@ -49,6 +49,11 @@ export default {
     getMore(){
       this.pageindex++
       this.getGoodsList()
+    },
+
+    // 路由导航 router-link另一种方式
+    getDetail(id){
+      this.$router.push({ name: "goodsInfo",params: { id } })
     }
   }
 }
