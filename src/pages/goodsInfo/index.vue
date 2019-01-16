@@ -1,5 +1,10 @@
 <template>
   <div class="goodsInfoContainer">
+
+    <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+      <div class="ball" v-show="ballFlag" ref="ball"></div>
+    </transition>
+
     <!-- 商品图片 -->
     <div class="mui-card">
 				<div class="mui-card-content">
@@ -24,14 +29,14 @@
           </p>
           <p class="numBox">
             购买数量: 
-            <input type="text" v-model="buyCount">
             <input type="button" :disabled="buyCount <= 1" @click="buyCount > 1 && buyCount--" value="-" class="reduce">
+            <input type="text" v-model="buyCount">
             <input type="button" :disabled="buyCount >= goodsList.stock_quantity" 
             @click="buyCount <= goodsList.stock_quantity && buyCount++" value="+" class="increase">
           </p>
           <p>
             <button class="mint-button mint-button--primary mint-button--small">立即购买</button>
-            <button class="mint-button mint-button--danger mint-button--small">加入购物车</button>
+            <button class="mint-button mint-button--danger mint-button--small" @click="addToShopCar">加入购物车</button>
           </p>
         </div>
 			</div>
@@ -62,6 +67,7 @@ export default {
       buyCount:1,
       lunboList:[],
       goodsList:[],
+      ballFlag: false
     }
   },
   created(){
@@ -94,6 +100,33 @@ export default {
     // 商品详情
     goDesc(id){
       this.$router.push({ name:'goodsDesc', params:{ id } })
+    },
+    // 添加到购物车
+    addToShopCar(){
+      this.ballFlag = !this.ballFlag
+    },
+    beforeEnter(el) {
+      el.style.transform = "translate(0, 0)";
+    },
+    enter(el,done){
+      el.offsetHeight;
+
+      // 获取小球的 在页面中的位置
+      const ballPlace = this.$refs.ball.getBoundingClientRect();
+      // 获取 徽标 在页面中的位置
+      const badgePlace = document
+        .getElementById("badge")
+        .getBoundingClientRect();
+
+      const x = badgePlace.left - ballPlace.left;
+      const y = badgePlace.top - ballPlace.top;
+
+      el.style.transform = `translate(${x}px, ${y}px)`;
+      el.style.transition = "all 0.5s cubic-bezier(.4,-0.3,1,.68)";
+      done();
+    },
+    afterEnter(el){
+      this.ballFlag = !this.ballFlag
     }
   }
 }
@@ -101,6 +134,19 @@ export default {
 
 <style lang="less" scoped>
   .goodsInfoContainer {
+    background-color: #eee;
+    overflow: hidden;
+    // 小球
+    .ball {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: red;
+      border-radius: 50%;
+      z-index: 999;
+      top: 390px;
+      left: 157px;
+    }
     // 轮播图
     .mint-swipe {
       height: 200px;
@@ -124,21 +170,13 @@ export default {
     .numBox {
       height: 35px;
       input[type="text"] {
-        position: relative;
         text-align: center;
-        width: 130px;
+        width: 65px;
         height: 100%;
       }
       input[type="button"] {
-        position: absolute;
         width: 40px;
-        height: 35px;
-      }
-      .reduce {
-        left: 79px;
-      }
-      .increase {
-        right: 105px;
+        height: 100%;
       }
     }
     // 介绍和评论按钮
