@@ -104,7 +104,16 @@ export default {
     // 添加到购物车
     addToShopCar(){
       this.ballFlag = !this.ballFlag
+      let goodsInfo = {
+        id: this.id,
+        count: this.buyCount,
+        price: this.goodsList.sell_price,
+        selected: true
+      }
+      // 用store
+      this.$store.commit('addToCar',goodsInfo)
     },
+    // 小球动画
     beforeEnter(el) {
       el.style.transform = "translate(0, 0)";
     },

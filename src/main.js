@@ -39,9 +39,49 @@ Vue.component('comment',comment)
 import VuePreview from 'vue2-preview'
 Vue.use(VuePreview)
 
+// 导入vuex
+import Vuex from "vuex"
+
+Vue.use(Vuex)
+
+let store = new Vuex.Store({
+  state:{
+    car:JSON.parse(localStorage.getItem('car') || '[]')
+  },
+  mutations:{
+    addToCar(state, goodsInfo){
+
+      // 如果没找到
+      let flag = false
+
+      state.car.some(item => {
+        if(item.id == goodsInfo.id){
+          // 找到了
+          item.count += goodsInfo.count
+          return flag = true
+        }
+      })
+      // 没找到则push
+      if(!flag){
+        state.car.push(goodsInfo)
+      }
+
+      localStorage.setItem('car', JSON.stringify(state.car))
+    }
+  },
+  getters:{
+    totalCount(state){
+      let allCount = 0
+      state.car.forEach(item => allCount += item.count)
+      return allCount
+    }
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
