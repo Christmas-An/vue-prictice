@@ -19,7 +19,7 @@
 		</div>
     <!-- 商品名称 -->
     <div class="mui-card">
-			<div class="mui-card-header">商品名称哈哈呵呵呵</div>
+			<div class="mui-card-header">商品名称</div>
 			<div class="mui-card-content">
 				<div class="mui-card-content-inner">
           <p class="price">
